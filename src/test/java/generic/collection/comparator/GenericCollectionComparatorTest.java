@@ -48,6 +48,28 @@ public class GenericCollectionComparatorTest {
         GenericCollectionComparator.compareCollections(actualUserList, expectedUserList);
     }
 
+    @Test(expectedExceptions = AssertionError.class)
+    public void compareCollections_fieldIsNull_assertionError() throws IllegalAccessException, InstantiationException {
+        // arrange
+        List<User> actualUserList = new ArrayList<>();
+        actualUserList.add(
+                new User()
+                        .setName("Sub-Zero")
+                        .setGender(new Gender().setMale())
+                        .setEmail("fake1@gmail.com"));
+
+        List<User> expectedUserList = new ArrayList<>();
+        expectedUserList.add(
+                new User()
+                        .setName("Sub-Zero")
+                        .setAge(23)
+                        .setGender(new Gender().setMale())
+                        .setEmail("fake1@gmail.com"));
+
+        // act & assert
+        GenericCollectionComparator.compareCollections(actualUserList, expectedUserList);
+    }
+
     @Test
     public void compareCollections_emptyCollections_match() throws IllegalAccessException, InstantiationException {
         // arrange

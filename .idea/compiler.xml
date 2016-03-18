@@ -23,10 +23,11 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="TestAutomationFromScratch" />
+        <module name="TestAutomationFromScratch_Java" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="TestAutomationFromScratch" target="1.8" />
+      <module name="TestAutomationFromScratch_Java" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

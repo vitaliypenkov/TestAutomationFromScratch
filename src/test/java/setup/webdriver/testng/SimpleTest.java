@@ -14,15 +14,23 @@ import java.util.concurrent.TimeUnit;
 public class SimpleTest {
     FirefoxDriver driver;
 
-    @Test
-    public void googleSearch() {
+    @BeforeTest
+    public void setup(){
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.google.com.ua/");
+    }
+    
+    @Test
+    public void googleSearch() {
+        // arrange
+        driver.get("https://www.google.com/");
+        
+        // act
         driver.findElement(By.name("q")).sendKeys("Github");
         driver.findElement(By.name("btnG")).click();
+        
+        // assert
         String result = driver.findElement(By.xpath(".//*[@class='rc']//a")).getText();
-
         Assert.assertEquals(result, "How people build software · GitHub");
     }
 
